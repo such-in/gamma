@@ -8,7 +8,7 @@ Gamma is a toolkit for measuring web. It can load pages in browsers, record HAR 
 
 - `setup.sh` – Install Dependencies (browsers, drivers via Selenium Manager, CLI tools, Python deps, Scapy).
 - `test.py` – smoke tests to verify browsers and tools work. It does not write files.
-- `gamma.py` – the main tool (page loads + captures → URL/IP extraction → geolocation → diagnostics). Saves artifacts.
+- `main.py` – the main tool (page loads + captures → URL/IP extraction → geolocation → diagnostics). Saves artifacts.
 
 ---
 
@@ -25,7 +25,7 @@ echo "<YOUR_TOKEN>" > ipinfo.token
 python3 test.py
 
 # 4) Run the main tool
-python3 gamma.py
+python3 main.py
 ```
 
 ---
@@ -37,7 +37,7 @@ This script:
 - Installs system packages: Chrome/Firefox/Brave, `nmap`, `traceroute`, `iputils-ping`, `openssl`, and `testssl.sh`.
 - Installs Python packages (system-wide): `selenium`, `selenium-wire`, `requests`, `pandas`, `scapy`.
 
-> If Scapy probes fail, either run `gamma.py` with sudo or ensure the capability grant succeeded.
+> If Scapy probes fail, either run `main.py` with sudo or ensure the capability grant succeeded.
 
 ---
 
@@ -78,7 +78,7 @@ This script:
 
 ### `ipinfo.token`
 
-If you want **ipinfo** lookups in `gamma.py`:
+If you want **ipinfo** lookups in `main.py`:
 
 ```bash
 echo "<YOUR_IPINFO_TOKEN>" > ipinfo.token
@@ -90,7 +90,7 @@ If the token is missing, Gamma prints `"[ipinfo] token not found; skipping ipinf
 
 ---
 
-## 3) `gamma.py` — the main tool
+## 3) `main.py` — the main tool
 
 ### What it does (per site)
 
@@ -127,7 +127,7 @@ Throughout, Gamma prints live progress:
 
 ### Key configuration knobs
 
-Open `gamma.py` and tweak:
+Open `main.py` and tweak:
 
 ```python
 # Parallel page crawls
